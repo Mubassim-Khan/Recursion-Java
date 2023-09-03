@@ -1,27 +1,19 @@
 import java.util.Scanner;
 
 public class reverseArray {
-    public static void ReverseArray(int numArray[]) {
-        int temp;
-        int count = numArray.length;
+    public static void ReverseArray(int numArray[], int start, int end) {
+        if (start >= end) {
+            return;
+        }
+        int temp = numArray[start];
+        numArray[start] = numArray[end];
+        numArray[end] = temp;
 
-        for (int i = 0; i < count; i++) {
-            for (int j = i + 1; j < count; j++) {
-                if (numArray[i] < numArray[j]) {
-                    temp = numArray[i];
-                    numArray[i] = numArray[j];
-                    numArray[j] = temp;
-                }
-            }
-        }
-        System.out.println("Array elements sorted in Descending order are: ");
-        for (int i = 0; i < count - 1; i++) {
-            System.out.print(numArray[i] + " ");
-        }
-        System.out.println(numArray[count - 1]);
+        ReverseArray(numArray, start + 1, end - 1);
     }
 
     public static void main(String[] args) {
+        // For taking Input Array
         int count;
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter size of Array: ");
@@ -34,6 +26,10 @@ public class reverseArray {
             numArray[i] = scanner.nextInt();
         }
         scanner.close();
-        ReverseArray(numArray);
+        ReverseArray(numArray, 0, numArray.length - 1);
+        // For Printing Answer Array
+        for (int i = 0; i < numArray.length; i++) {
+            System.out.print(numArray[i] + " ");
+        }
     }
 }

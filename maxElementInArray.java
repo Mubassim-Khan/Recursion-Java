@@ -1,16 +1,14 @@
 import java.util.Scanner;
 
 public class maxElementInArray {
-    static void maxElement(int numArray[]) {
-        int max = 0;
-        int count = numArray.length;
-
-        for (int i = 0; i < count; i++) {
-            if (numArray[i] > max) {
-                max = numArray[i];
+    static int maxElement(int numArray[], int currentIndex, int max) {
+        if (currentIndex < numArray.length) {
+            if (numArray[currentIndex] > max) {
+                max = numArray[currentIndex];
             }
+            return maxElement(numArray, currentIndex + 1, max);
         }
-        System.out.println("Max number is: " + max);
+        return max;
     }
 
     public static void main(String[] args) {
@@ -26,6 +24,7 @@ public class maxElementInArray {
             numArray[i] = scanner.nextInt();
         }
         scanner.close();
-        maxElement(numArray);
+
+        System.out.println("Largest Number in Array is: " + maxElement(numArray, 0, 0));
     }
 }
