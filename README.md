@@ -7,6 +7,7 @@ This Repository contains Recursion programs in Java, helpful for understanding t
 - Greatest Element in an Array.
 - Recursive Addition.
 - Reversing Array.
+- Tower of Hanoi.
 
 ## Features
 
